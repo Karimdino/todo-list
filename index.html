@@ -10,28 +10,21 @@
 </head>
 
 <body>
-    <div class="container">
+               <div id="myDIV" class="header">
+  <h2>My To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
 
-        <div class="header">
-            <h1>Things To Be Done</h1>
-            <div class="inputField">
-                <input type="text" placeholder="Add To-Do...">
-                <span class="addButton">Add</span>
-            </div>
-
-        </div>
-
-
-        <div class="taskList">
-            <ul>
-                <li class="checked">HTML erstellen</li>
-                <li>CSS erstellen</li>
-                <li>JS erstellen</li>
-                <li>Pause machen</li>
-            </ul>
-        </div>
-
-    </div>
+<ul id="myUL">
+  <li>Hit the gym</li>
+  <li class="checked">Pay bills</li>
+  <li>Meet George</li>
+  <li>Buy eggs</li>
+  <li>Read a book</li>
+  <li>Organize office</li>
+</ul>
+<script src="./script.js"></script>
 </body>
 
 </html>
