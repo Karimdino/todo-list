@@ -1,4 +1,86 @@
-*{
-
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+* {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    background-image: url(./assets/bg-main-desktop.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.taskList {
+    background-color: #FA7453;
+    height: 25em;
+    border-radius: 0 0 1em 0;
+}
+
+ul {
+    list-style: none;
+    padding-top: .5em;
+}
+
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 1em .5em .75em 2em;
+    background: white;
+    font-size: 1em;
+    transition: 0.2s;
+    margin: 2em 3em 2em 1em;
+    width: 75%;
+}
+
+ul li:hover {
+    background-color: #e6e8e6;
+}
+
+.container {
+    background-color: #FFB964;
+    width: 30em;
+    height: 35em;
+    border-radius: 1em 0 1em 0;
+}
+
+.header {
+    margin-top: 1em;
+    text-align: center;
+    height: 9em;
+}
+
+input {
+    margin-top: 1em;
+    width: 75%;
+    padding: 1em;
+    font-size: 1em;
+}
+
+.inputField {
+    display: flex;
+    justify-content: center;
+}
+
+.addButton {
+    background-color: #191826;
+    color: white;
+    width: 20%;
+    margin-top: 1em;
+    padding: 1em;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addButton:hover {
+    background-color: white;
+    color: #191826;
 }
