@@ -1,28 +1,69 @@
 const SaveToDo = JSON.parse(localStorage.getItem('input'));
-SaveToDo.forEach(newElement);
-
-function closeElement(event) {
-	const div = event.target.parentElement;
-	div.style.display = 'none';
+if (SaveToDo != null) {
+	// console.log(SaveToDo);
+	SaveToDo.forEach(newElement);
 }
+
+function SaveAllList() {
+	const input = Array.from(
+		document.querySelector('ul').querySelectorAll('.todoItem')
+	).map((element) => element.innerText);
+	const list1 = JSON.stringify(input);
+
+	localStorage.setItem('input', list1);
+}
+// remove Item
+function closeElement(event) {
+	const taskElement = event.target.parentElement;
+
+	taskElement.remove();
+	console.log(taskElement);
+	SaveAllList();
+}
+
+function EditElement(event) {
+	const newElement = event.target.parentElement;
+	const TheTextInSpan = newElement.querySelector('.todoItem').innerText;
+	console.log(TheTextInSpan);
+
+	// const li = document.createElement('li');
+
+	// const textInTheInput = document.createElement('span');
+	// textInTheInput.innerText = inputValue;
+	// textInTheInput.className = 'todoItem';
+	// li.appendChild(textInTheInput);
+	// if (inputValue === '') {
+	// 	alert('You must write something!');
+	// } else {
+	// 	document.getElementById('myUL').appendChild(li);
+	// 	SaveAllList();
+	// }
+	// document.getElementById('myInput').value = '';
+}
+
 function checked(ev) {
 	if (ev.target.tagName === 'LI') {
 		ev.target.classList.toggle('checked');
 	}
 }
 
-// Create a "close" button and append it to each list item
+// Create a "close" button and Edit button append it to each list item
 const myNodelist = document.getElementsByTagName('LI');
 
 for (let i = 0; i < myNodelist.length; i++) {
-	const span = document.createElement('SPAN');
+	const spanDelet = document.createElement('SPAN');
+	const spanEdit = document.createElement('SPAN');
+
 	const txt = document.createTextNode('\u00D7');
-	span.className = 'close';
-	span.appendChild(txt);
-	myNodelist[i].appendChild(span);
+	const EditIcon = document.createTextNode('\u270E');
+	spanDelet.className = 'close';
+
+	spanDelet.appendChild(txt);
+	spanEdit.appendChild(EditIcon);
+	myNodelist[i].appendChild(spanDelet);
 }
 
-// Click on a close button to hide the current list item
+// Click on a close button to Delete the current list item
 const close = document.getElementsByClassName('close');
 
 for (let i = 0; i < close.length; i++) {
@@ -45,20 +86,21 @@ function newElement(inputValue) {
 		alert('You must write something!');
 	} else {
 		document.getElementById('myUL').appendChild(li);
-		const input = Array.from(
-			document.querySelector('ul').querySelectorAll('.todoItem')
-		).map((element) => element.innerText);
-		const list1 = JSON.stringify(input);
-
-		localStorage.setItem('input', list1);
+		SaveAllList();
 	}
 	document.getElementById('myInput').value = '';
 
 	const span = document.createElement('SPAN');
+	const span2 = document.createElement('SPAN');
 	const txt = document.createTextNode('\u00D7');
+	const EditIcon = document.createTextNode('\u270E');
 	span.className = 'close';
+	span2.className = 'Edit';
 	span.appendChild(txt);
+	span2.appendChild(EditIcon);
 	li.appendChild(span);
+	li.appendChild(span2);
 
 	span.onclick = closeElement;
+	span2.onclick = EditElement;
 }
