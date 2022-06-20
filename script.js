@@ -22,23 +22,22 @@ function closeElement(event) {
 }
 
 function EditElement(event) {
-	const newElement = event.target.parentElement;
-	const TheTextInSpan = newElement.querySelector('.todoItem').innerText;
-	console.log(TheTextInSpan);
+	const newElement = event.currentTarget.parentElement;
+	const TheTextInSpan = newElement.querySelector('.todoItem');
+	const editInputtext = newElement.querySelector('.InputEdit');
 
-	// const li = document.createElement('li');
-
-	// const textInTheInput = document.createElement('span');
-	// textInTheInput.innerText = inputValue;
-	// textInTheInput.className = 'todoItem';
-	// li.appendChild(textInTheInput);
-	// if (inputValue === '') {
-	// 	alert('You must write something!');
-	// } else {
-	// 	document.getElementById('myUL').appendChild(li);
-	// 	SaveAllList();
-	// }
-	// document.getElementById('myInput').value = '';
+	editInputtext.classList.remove('hidden');
+	TheTextInSpan.classList.add('hidden');
+	editInputtext.addEventListener('keypress', function (event) {
+		if (event.key === 'Enter') {
+			editInputtext.classList.add('hidden');
+			TheTextInSpan.classList.remove('hidden');
+			console.log(editInputtext.value);
+			console.log(TheTextInSpan.innerText);
+			TheTextInSpan.innerText = editInputtext.value;
+			SaveAllList();
+		}
+	});
 }
 
 function checked(ev) {
@@ -89,6 +88,14 @@ function newElement(inputValue) {
 		SaveAllList();
 	}
 	document.getElementById('myInput').value = '';
+
+	const editInput = document.createElement('input');
+	editInput.type = 'text';
+	editInput.value = inputValue;
+
+	li.appendChild(editInput);
+	editInput.classList.add('hidden');
+	editInput.classList.add('InputEdit');
 
 	const span = document.createElement('SPAN');
 	const span2 = document.createElement('SPAN');
