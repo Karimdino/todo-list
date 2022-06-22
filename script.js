@@ -1,6 +1,5 @@
 const SaveToDo = JSON.parse(localStorage.getItem('input'));
 if (SaveToDo != null) {
-	// console.log(SaveToDo);
 	SaveToDo.forEach(newElement);
 }
 
